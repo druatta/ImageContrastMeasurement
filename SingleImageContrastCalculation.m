@@ -1,23 +1,22 @@
 close all;
-RGBImage = ReadImageFromWorkspace('TestImage.bmp');
+CameraPhoto = ReadImageFromWorkspace('12V_400nsStrobePulse_Image.png');
 
 figure('Name', 'Camera Photo')
-DisplayImage(RGBImage);
-GrayscaleImage = ConvertRGBToGrayscale(RGBImage);
-
+DisplayImage(CameraPhoto);
 figure('Name', 'Camera Photo Gray Intensity');
-imhist(GrayscaleImage);
+imhist(CameraPhoto);
 
 % We use histogram equalization: 
 % Histogram equalization paper: https://www.math.uci.edu/icamp/courses/math77c/demos/hist_eq.pdf
 % Histogram equalization video: https://www.youtube.com/watch?v=PD5d7EKYLcA
-I2 = histeq(GrayscaleImage); 
-figure('Name', 'One Histogram Equalization');
-DisplayImage(I2);
+OneHistogramEqualization = histeq(GrayscaleImage); 
+figure('Name', 'One histogram equalizion: Image quality');
+DisplayImage(OneHistogramEqualization);
+figure('Name', 'One histogram equalizion: Gray Intensity');
+imhist(OneHistogramEqualization);
 
-figure('Name', 'One Histogram Equalizion Gray Intensity');
-
-
-I3 = histeq(I2);
-figure ('Name', 'Two Histogram Equalizations');
-DisplayImage(I3);
+TwoHistogramEqualizations = histeq(OneHistogramEqualization);
+figure ('Name', 'Two histogram equalizations: Image quality');
+DisplayImage(TwoHistogramEqualizations);
+figure('Name', 'Two histogram equalizations: Gray Intensity')
+imhist(TwoHistogramEqualizations);
