@@ -10,13 +10,13 @@ imhist(CameraPhoto);
 % Histogram equalization paper: https://www.math.uci.edu/icamp/courses/math77c/demos/hist_eq.pdf
 % Histogram equalization video: https://www.youtube.com/watch?v=PD5d7EKYLcA
 OneHistogramEqualization = histeq(GrayscaleImage); 
-figure('Name', 'One histogram equalizion: Image quality');
+figure('Name', 'Image after one histogram equalization');
 DisplayImage(OneHistogramEqualization);
-figure('Name', 'One histogram equalizion: Gray Intensity');
+figure('Name', 'One Histogram Equalizion Gray Intensity');
 imhist(OneHistogramEqualization);
 
 TwoHistogramEqualizations = histeq(OneHistogramEqualization);
-figure ('Name', 'Two histogram equalizations: Image quality');
+figure ('Name', 'Image after two histogram equalizations');
 DisplayImage(TwoHistogramEqualizations);
-figure('Name', 'Two histogram equalizations: Gray Intensity')
-imhist(TwoHistogramEqualizations);
+figure('Name', 'Two Histogram Equalizations: ')
+%imhist(I3);
