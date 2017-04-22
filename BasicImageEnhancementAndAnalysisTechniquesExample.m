@@ -1,3 +1,4 @@
+close all;
 %% Basic Image Enhancement and Analysis Techniques
 % This example shows how to enhance an image as a preprocessing step before
 % analysis. In this example, you correct the nonuniform background
@@ -5,9 +6,8 @@
 % perform analysis of the image foreground objects.
 %% Step 1: Read the Image into the Workspace
 % Read and display the grayscale image |rice.png|.
-I = imread('12V_400nsStrobePulse_Image.png');
-ImageAfterHistogramEqualization = histeq(I);
-imshow(ImageAfterHistogramEqualization)
+I = imread('rice.png');
+imshow(I)
 %% Step 2: Preprocess the Image to Enable Analysis
 % In the sample image, the background illumination is brighter in the
 % center of the image than at the bottom. As a preprocessing step before
@@ -23,7 +23,7 @@ imshow(ImageAfterHistogramEqualization)
 % structuring element must be sized so that it cannot fit entirely inside a
 % single grain of rice. The example calls the |strel| function to create a
 % disk-shaped structuring element with a radius of 15.
-background = imopen(ImageAfterHistogramEqualization,strel('disk',15));
+background = imopen(I,strel('disk',15));
 %% 
 % View the background approximation image as a surface to see where
 % illumination varies. The |surf| command creates colored parametric
@@ -48,7 +48,7 @@ set(gca,'ydir','reverse');
 % original image, |I|, and view the resulting image. After subtracting the
 % adjusted background image from the original image, the resulting image
 % has a uniform background but is now a bit dark for analysis.
-I2 = ImageAfterHistogramEqualization - background;
+I2 = I - background;
 imshow(I2)
 %% 
 % Use |imadjust| to increase the contrast of the processed image
