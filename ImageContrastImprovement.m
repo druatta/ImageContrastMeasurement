@@ -18,7 +18,9 @@ figure('Name', 'One Histogram Equalizion: Gray Intensity Histogram');
 CreateHistogram(PhotoAfterHistogramEqualization);
 
 figure('Name', 'Black and White Photo');
-level = graythresh(PhotoAfterHistogramEqualization);
-bw = im2bw(PhotoAfterHistogramEqualization,level);
-bw = bwareaopen(bw, 100);
-imshow(bw)
+BlackAndWhiteImage = CreateBinaryImageUsingOtsusMethod(PhotoAfterHistogramEqualization);
+
+figure('Name', 'Photo after Morphological Opening')
+PixelThreshold = 50;
+BlackAndWhiteImage = MorphologicalOpening(BlackAndWhiteImage, PixelThreshold);
+DisplayImage(BlackAndWhiteImage);
