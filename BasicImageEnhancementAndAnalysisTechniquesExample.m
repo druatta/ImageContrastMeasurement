@@ -7,7 +7,10 @@ close all;
 %% Step 1: Read the Image into the Workspace
 % Read and display the grayscale image |rice.png|.
 I = imread('rice.png');
+figure
 imshow(I)
+
+
 %% Step 2: Preprocess the Image to Enable Analysis
 % In the sample image, the background illumination is brighter in the
 % center of the image than at the bottom. As a preprocessing step before
