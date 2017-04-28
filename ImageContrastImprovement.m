@@ -13,14 +13,3 @@ CreateHistogram(CameraPhoto);
 figure('Name', 'One Histogram Equalizion: Image Quality')
 PhotoAfterHistogramEqualization = RunHistogramEqualization(CameraPhoto); 
 DisplayImage(PhotoAfterHistogramEqualization);
-
-figure('Name', 'One Histogram Equalizion: Gray Intensity Histogram');
-CreateHistogram(PhotoAfterHistogramEqualization);
-
-figure('Name', 'Black and White Photo');
-BlackAndWhiteImage = CreateBinaryImageUsingOtsusMethod(PhotoAfterHistogramEqualization);
-
-figure('Name', 'Photo after Morphological Opening')
-PixelThreshold = 50;
-BlackAndWhiteImage = MorphologicalOpening(BlackAndWhiteImage, PixelThreshold);
-DisplayImage(BlackAndWhiteImage);
