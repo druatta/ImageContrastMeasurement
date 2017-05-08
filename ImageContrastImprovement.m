@@ -4,17 +4,34 @@ CameraPhoto = ReadImageFromWorkspace('12V_400ns.png');
 figure('Name', 'Original Photo');
 DisplayImage(CameraPhoto);
 
-% We use histogram equalization: 
-% Histogram equalization paper: https://www.math.uci.edu/icamp/courses/math77c/demos/hist_eq.pdf
-% Histogram equalization video: https://www.youtube.com/watch?v=PD5d7EKYLcA
-figure('Name', 'Histogram Equalization')
-PhotoAfterHistogramEqualization = HistogramEqualization(CameraPhoto); 
+figure('Name','Photo After Histogram Equalization')
+PhotoAfterHistogramEqualization = HistogramEqualization(CameraPhoto);
 DisplayImage(PhotoAfterHistogramEqualization);
 
-figure('Name', 'Histogram Equalization then Contrast Stretching')
+figure('Name','Photo After Histogram Equalization then Otsus Method')
+PhotoAfterOtsusMethod = CreateBinaryImageUsingOtsusMethod(PhotoAfterHistogramEqualization);
+DisplayImage(PhotoAfterOtsusMethod);
+
+figure('Name','Photo After Histogram Equalization then Locally Adaptive Thresholding')
+PhotoAfterLocallyAdaptiveThresholding = imbinarize(PhotoAfterHistogramEqualization, 'adaptive');
+DisplayImage(PhotoAfterLocallyAdaptiveThresholding)
+
+figure('Name', 'Photo After Histogram Equalization then Otsus Method then a 3x3 Averaging Filter')
+PhotoAfterOtsusMethodAnd_3x3_AveragingFilter = filter2(fspecial('average',3),PhotoAfterOtsusMethod);
+DisplayImage(PhotoAfterOtsusMethodAnd_3x3_AveragingFilter);
+
+figure('Name', 'Photo After Histogram Equalization then Contrast Stretching')
 PhotoAfterContrastStretching = ContrastStretching(PhotoAfterHistogramEqualization);
 DisplayImage(PhotoAfterContrastStretching);
 
-figure('Name', 'Histogram Equalization then Contrast Stretching then 3x3 Averaging Filter')
-PhotoAfterAveragingFilter = filter2(fspecial('average',2),PhotoAfterContrastStretching)/255;
-DisplayImage(PhotoAfterAveragingFilter);
+figure('Name','Photo After Histogram Equalization then Contrast Stretching then Otsus Method')
+PhotoAfterContrastStretchingAndOtsusMethod = CreateBinaryImageUsingOtsusMethod(PhotoAfterContrastStretching);
+DisplayImage(PhotoAfterContrastStretchingAndOtsusMethod)
+
+figure('Name', 'Photo After Histogram Equalization then Contrast Stretching then Otsus Method then a 3x3 Averaging Filter')
+PhotoAfterContrastStretching_OtsusMethod_And3x3_AveragingFilter = filter2(fspecial('average',3), PhotoAfterContrastStretchingAndOtsusMethod);
+DisplayImage(PhotoAfterContrastStretching_OtsusMethod_And3x3_AveragingFilter)
+
+figure('Name', 'Photo After Histogram Equalization then Contrast Stretching then a 3x3 Averaging Filter')
+PhotoAfter_3x3_AveragingFilter = filter2(fspecial('average',3), PhotoAfterContrastStretching) / 255;
+DisplayImage(PhotoAfter_3x3_AveragingFilter)
