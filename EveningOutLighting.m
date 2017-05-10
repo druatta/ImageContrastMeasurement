@@ -1,6 +1,6 @@
 close all
 
-CameraPhoto = ReadImageFromWorkspace('11V200ns.jpg');
+CameraPhoto = ReadImageFromWorkspace('[30,7] Quad LEDs + Optics.bmp');
 figure('Name', 'Original Photo');
 DisplayImage(CameraPhoto);
 
