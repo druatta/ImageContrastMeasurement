@@ -1,6 +1,6 @@
-function [  ] = CreateHistogram( Image )
+function [PixelCount GreyLevels] = CreateHistogram( Image )
 
-imhist(Image);
+[PixelCount GreyLevels] = imhist(Image);
 
 end
 
