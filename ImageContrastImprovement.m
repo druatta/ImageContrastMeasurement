@@ -1,6 +1,6 @@
 close all;
 
-CameraPhoto = ReadImageFromWorkspace('[1,55] Quad LEDs + Optics.bmp');
+CameraPhoto = ReadImageFromWorkspace('[0.2,60] Quad LED with helping hands.bmp');
 figure('Name', 'Original Photo');
 DisplayImage(CameraPhoto);
 
