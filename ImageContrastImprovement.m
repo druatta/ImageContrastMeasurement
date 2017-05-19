@@ -1,6 +1,6 @@
 close all;
 
-CameraPhoto = ReadImageFromWorkspace('[0.2,60] Quad LED with helping hands.bmp');
+CameraPhoto = ReadImageFromWorkspace('100ns10V100kStrobeFrequency500StrobeTriggerCount.bmp');
 figure('Name', 'Original Photo');
 DisplayImage(CameraPhoto);
 

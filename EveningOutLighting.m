@@ -1,6 +1,6 @@
 close all
 
-CameraPhoto = ReadImageFromWorkspace('[0.2,60] Quad LED with helping hands.bmp');
+CameraPhoto = ReadImageFromWorkspace('11V200us.jpg');
 figure('Name', 'Raw Image');
 DisplayImage(CameraPhoto);
 
@@ -18,7 +18,7 @@ figure('Name','Photo After Histogram Equalization then Contrast Adjustment')
 PhotoAfterContrastAdjustment = ContrastStretching(PhotoAfterHistogramEqualization);
 DisplayImage(PhotoAfterContrastAdjustment);
 
-figure('Name','Photo After Histogram Equalization then Locally Adaptive Thresholding')
+figure('Name','Photo After Histogram Equalization then Thresholding')
 PhotoAfterLocallyAdaptiveThresholding = imbinarize(PhotoAfterHistogramEqualization);
 DisplayImage(PhotoAfterLocallyAdaptiveThresholding);
 
